@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إمساكية رمضان 2026 | ليبيا</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<div id="loader-wrapper">
+    <div class="loader">
+        <div class="loader-circle"></div>
+        <div class="loader-text">جاري تحضير الإمساكية...</div>
+    </div>
+</div>
+
+    <div class="background-stars">
+        <div class="stars-1"></div>
+        <div class="stars-2"></div>
+        <div class="neon-moon"></div>
+    </div>
+
+    <div class="logo-container">
+        <img src="logo.png" alt="شعار إمساكية 2026" class="site-logo">
+    </div>
+
+    <div class="menu-icon" onclick="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+	
+</div>
+
+<div id="sidebar" class="sidebar">
+    <span class="close-sidebar" onclick="toggleSidebar()">&times;</span>
+    <div class="sidebar-links">
+        <a href="#" onclick="toggleSidebar()">🏠 الرئيسية</a>
+        <a href="#today-summary" onclick="toggleSidebar()">📍 مواقيت اليوم</a>
+        <a href="#dua-card" onclick="toggleSidebar()">✨ دعاء اليوم</a>
+        <a href="#timetable-section" onclick="toggleSidebar()">📅 الإمساكية الكاملة</a>
+        <a href="#" onclick="toggleTools(); toggleSidebar();">🌙 مركز الأدوات</a>
+        <a href="#" onclick="setupNotifications(); toggleSidebar();">🔔 تفعيل التنبيهات</a>
+        <hr style="border: 0.5px solid var(--glass-border); margin: 20px 0;">
+        <p style="font-size: 0.8rem; opacity: 0.6; text-align: center;">إمساكيتي 2026 - ليبيا</p>
+    </div>
+</div>
+<div class="main-card countdown-container" style="text-align: center; border: 2px solid var(--neon-cyan);">
+    <h3 id="timer-label" style="color: var(--neon-cyan); margin-bottom: 10px;">باقي على الإفطار</h3>
+	<div style="text-align: center; margin-top: 15px;">
+    <button onclick="shareApp()" class="nav-btn" style="background: rgba(255, 204, 0, 0.1); border: 1px solid var(--main-color); color: var(--main-color); padding: 8px 20px; border-radius: 20px; cursor: pointer;">
+        📤 مشاركة الإمساكية
+    </button>
+</div>
+    <div id="countdown" style="font-size: 2.5rem; font-weight: bold; color: var(--neon-green); text-shadow: 0 0 15px var(--neon-green);">
+        00:00:00
+    </div>
+	<div style="text-align: center; margin-bottom: 15px;">
+    <button id="notify-btn" onclick="setupNotifications()" class="nav-btn" style="border-color: var(--neon-green); font-size: 0.8rem;">
+        🔔 تفعيل تنبيهات الأذان
+    </button>
+    <p id="location-status" style="font-size: 0.8rem; color: var(--neon-cyan); margin-top: 5px;">جاري تحديد موقعك...</p>
+</div>
+    <div style="width: 100%; background: #222; height: 10px; border-radius: 5px; margin-top: 15px; overflow: hidden;">
+        <div id="progress-bar" style="width: 0%; height: 100%; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); transition: width 1s;"></div>
+    </div>
+</div>
+
+<audio id="iftaar-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+    <div class="main-card" id="dua-card" style="position: relative;">
+    <h3 style="color: var(--neon-green); margin-top: 0; text-align: center;">✨ نفحات إيمانية</h3>
+    <p id="dua-text">جاري تحميل الأدعية...</p>
+    
+    <div style="text-align: center; margin-top: 15px;">
+        <button onclick="downloadDua()" class="nav-btn" style="font-size: 0.8rem; border-color: var(--neon-green);">
+            📥 تحميل كصورة للمشاركة
+        </button>
+    </div>
+</div>
+
+    <div class="main-card">
+        <div style="text-align: center; margin-bottom: 25px;">
+            <h2 style="color: var(--neon-cyan); margin-bottom: 15px;">إمساكية شهر رمضان 1447هـ</h2>
+            
+            <label for="citySwitcher" style="margin-left: 10px;">اختر المدينة:</label>
+            <select id="citySwitcher" onchange="generateRamadanTable()">
+                <option value="tripoli">طرابلس</option>
+                <option value="ghadames">غدامس</option>
+            </select>
+        </div>
+<div id="today-summary" class="main-card reveal" style="border: 2px solid var(--neon-green); background: rgba(57, 255, 20, 0.05); text-align: center;">
+    <h3 style="color: var(--neon-green); margin: 0;">📍 مواقيت صلاة اليوم</h3>
+    <div id="today-times" style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 15px; gap: 10px;">
+        </div>
+</div>
+
+<div class="main-card reveal" style="padding: 15px; margin-bottom: 10px;">
+    <input type="text" id="tableSearch" onkeyup="filterTable()" placeholder="🔍 ابحث عن يوم أو تاريخ (مثلاً: جمعة، 27 رمضان)..." 
+           style="width: 100%; background: transparent; border: 1px solid var(--neon-cyan); color: white; padding: 10px; border-radius: 10px; outline: none;">
+</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>رمضان</th>
+                        <th>اليوم</th>
+                        <th>التاريخ</th>
+                        <th>الفجر</th>
+                        <th>الشروق</th>
+                        <th>الظهر</th>
+                        <th>العصر</th>
+                        <th>المغرب</th>
+                        <th>العشاء</th>
+                    </tr>
+                </thead>
+                <tbody id="timetableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="about-section" class="main-card" style="display:none; text-align: center;">
+        <h2 style="color: var(--neon-cyan);">عن المنصة</h2>
+        <p style="line-height: 1.8; color: #ddd;">
+            مرحبا بكم في منصة الإمساكية لسنة 2026. <br>
+            نقدم لكم مواقيت دقيقة لمدينتي طرابلس وغدامس بتصميم عصري يجمع بين الروحانية والتكنولوجيا.
+        </p>
+        <button onclick="closeAbout()" class="nav-btn">إغلاق</button>
+    </div>
+<div class="main-card" style="border: 1px solid var(--neon-cyan); text-align: center;">
+    <h3 style="color: var(--neon-cyan);">📖 متابعة الختمة</h3>
+    <input type="number" id="quran-part" min="0" max="30" placeholder="الجزء الواصل إليه" 
+           style="background:transparent; color:white; border:1px solid var(--neon-cyan); padding:5px; width:60px; text-align:center;">
+    <button onclick="saveQuranProgress()" class="nav-btn" style="font-size: 0.8rem;">حفظ</button>
+    <div id="quran-status" style="margin-top:10px; font-size: 0.9rem; color: var(--neon-green);"></div>
+</div>
+<button class="floating-tools-btn" onclick="toggleTools()">🌙 الأدوات</button>
+
+<<div id="tools-modal" class="modal-overlay">
+    <div class="main-card modal-content">
+        <span class="close-modal" onclick="toggleTools()">&times;</span>
+        
+        <h2 class="tool-main-title">⭐ مركز الأدوات</h2>
+
+<section class="tool-divider">
+    <div class="tool-header"><span>🌳</span><h3>شجرة الخيرات</h3></div>
+    <p style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 10px;">أضئ أغصان شجرتك بإنجازاتك اليومية:</p>
+    <div class="tree-container">
+        <div class="tree-branch" onclick="lightBranch(this)">📖 ورد القرآن</div>
+        <div class="tree-branch" onclick="lightBranch(this)">🕌 صلاة التراويح</div>
+        <div class="tree-branch" onclick="lightBranch(this)">🤝 عمل خير</div>
+        <div class="tree-branch" onclick="lightBranch(this)">🤲 دعاء بظهر غيب</div>
+    </div>
+    <button onclick="resetTree()" class="reset-small-btn" style="margin-top: 15px;">يوم جديد</button>
+</section>
+        <section class="tool-divider">
+            <div class="tool-header">
+                <span>🧭</span>
+                <h3>اتجاه القبلة</h3>
+            </div>
+            <div id="compass-container">
+                <div id="compass-pointer">⬆️</div>
+            </div>
+            <p id="qibla-dir">جاري تحديد الاتجاه...</p>
+        </section>
+
+        <section class="tool-divider">
+            <div class="tool-header">
+                <span>📿</span>
+                <h3>المسبحة الإلكترونية</h3>
+            </div>
+            <div id="tasbeeh-display">0</div>
+            <div style="display: flex; justify-content: center; gap: 15px;">
+                <button onclick="incrementTasbeeh()" class="tasbeeh-btn">+</button>
+                <button onclick="resetTasbeeh()" class="reset-small-btn">تصفير</button>
+            </div>
+        </section>
+
+        <section class="tool-divider">
+            <div class="tool-header">
+                <span>🏮</span>
+                <h3>فانوس المعلومات</h3>
+            </div>
+            <div id="lantern-box" onclick="glowLantern()">
+                <p id="lantern-text">اضغط لاستكشاف ذكرى رمضانية...</p>
+            </div>
+        </section>
+
+        <section class="tool-divider" style="border-bottom: none;">
+            <div class="tool-header">
+                <span>💰</span>
+                <h3>حاسبة زكاة الفطر</h3>
+            </div>
+            <div class="zakat-input-group">
+                <input type="number" id="family-count" min="1" placeholder="عدد الأفراد" oninput="calculateZakat()">
+            </div>
+            <div id="zakat-result">المقدار: 1 صاع لكل فرد</div>
+        </section>
+
+    </div>
+</div>
+
+<hr style="border: 0.5px solid var(--glass-border); margin: 20px 0;">
+
+
+</div>
+        </div>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>© 2026 جميع الحقوق محفوظة لـ <span class="neon-text-small">عبد الرحمن أحمد هيبة و المهدي خالد حومان</span></p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">صنع بكل حب لخدمة الصائمين لا تنسونا بالدعاء</p>
+		<div class="social-links">
+        <a href="https://www.facebook.com/people/%D8%A7%D9%84%D9%88%D9%83%D8%A7%D9%84%D8%A9-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A%D8%A9-%D9%84%D9%84%D8%AC%D9%87%D9%88%D8%AF-%D8%A7%D9%84%D8%AA%D8%B7%D9%88%D8%B9%D9%8A%D8%A9-%D9%84%D9%84%D8%B4%D8%A8%D8%A7%D8%A8-%D9%85%D9%83%D8%AA%D8%A8-%D8%BA%D8%AF%D8%A7%D9%85%D8%B3/61581253324273/" style="color: var(--neon-green); margin: 0 10px; text-decoration: none;">Facebook</a>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
