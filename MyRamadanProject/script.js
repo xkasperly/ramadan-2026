@@ -52,63 +52,41 @@ const ramadanDuas = [
 ];
 
 // 2. قاعدة بيانات المواقيت الأساسية لليوم الأول (رمضان 2026)
-const cityData = {
-    tripoli: {
-        fajr: { h: 5, m: 52 },
-        sunrise: { h: 7, m: 20 },
-        dhuhr: { h: 13, m: 10 },
-        asr: { h: 16, m: 15 },
-        maghrib: { h: 19, m: 02 },
-        isha: { h: 20, m: 25 }
-    },
-    ghadames: {
-        fajr: { h: 6, m: 12 },
-        sunrise: { h: 7, m: 35 },
-        dhuhr: { h: 13, m: 28 },
-        asr: { h: 16, m: 38 },
-        maghrib: { h: 19, m: 22 },
-        isha: { h: 20, m: 42 }
-    }
-};
-
-const daysAr = ["الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد", "الاثنين", "الثلاثاء"];
-
-// --- وظيفة توليد الجدول الكامل (30 يوماً) ---
-// 1. قاعدة بيانات المواقيت (أدخل المواقيت الصحيحة هنا)
 const ramadanTimes = {
     tripoli: [
-      { day: 1, date: "18 فبراير", fajr: "06:37", shuruq: "07:59", dhuhr: "13:40", asr: "16:47", maghrib: "19:16", isha: "20:34" },
-		{ day: 2, date: "19 فبراير", fajr: "06:36", shuruq: "07:58", dhuhr: "13:40", asr: "16:48", maghrib: "19:17", isha: "20:35" },
-		{ day: 3, date: "20 فبراير", fajr: "06:36", shuruq: "07:57", dhuhr: "13:40", asr: "16:48", maghrib: "19:18", isha: "20:36" },
-		{ day: 4, date: "21 فبراير", fajr: "06:35", shuruq: "07:56", dhuhr: "13:40", asr: "16:49", maghrib: "19:19", isha: "20:36" },
-		{ day: 5, date: "22 فبراير", fajr: "06:34", shuruq: "07:55", dhuhr: "13:39", asr: "16:49", maghrib: "19:19", isha: "20:37" },
-		{ day: 6, date: "23 فبراير", fajr: "06:33", shuruq: "07:54", dhuhr: "13:39", asr: "16:50", maghrib: "19:20", isha: "20:38" },
-		{ day: 7, date: "24 فبراير", fajr: "06:32", shuruq: "07:53", dhuhr: "13:39", asr: "16:50", maghrib: "19:21", isha: "20:38" },
-		{ day: 8, date: "25 فبراير", fajr: "06:31", shuruq: "07:52", dhuhr: "13:39", asr: "16:51", maghrib: "19:22", isha: "20:39" },
-		{ day: 9, date: "26 فبراير", fajr: "06:30", shuruq: "07:51", dhuhr: "13:39", asr: "16:51", maghrib: "19:22", isha: "20:40" },
-		{ day: 10, date: "27 فبراير", fajr: "06:29", shuruq: "07:50", dhuhr: "13:39", asr: "16:51", maghrib: "19:23", isha: "20:40" },
-		{ day: 11, date: "28 فبراير", fajr: "06:28", shuruq: "07:49", dhuhr: "13:38", asr: "16:52", maghrib: "19:24", isha: "20:41" },
-		{ day: 12, date: "1 مارس", fajr: "06:27", shuruq: "07:48", dhuhr: "13:38", asr: "16:52", maghrib: "19:24", isha: "20:42" },
-		{ day: 13, date: "2 مارس", fajr: "06:26", shuruq: "07:47", dhuhr: "13:38", asr: "16:52", maghrib: "19:25", isha: "20:42" },
-		{ day: 14, date: "3 مارس", fajr: "06:25", shuruq: "07:46", dhuhr: "13:38", asr: "16:53", maghrib: "19:26", isha: "20:43" },
-		{ day: 15, date: "4 مارس", fajr: "06:24", shuruq: "07:45", dhuhr: "13:38", asr: "16:53", maghrib: "19:27", isha: "20:44" },
-		{ day: 16, date: "5 مارس", fajr: "06:22", shuruq: "07:44", dhuhr: "13:37", asr: "16:53", maghrib: "19:27", isha: "20:44" },
-		{ day: 17, date: "6 مارس", fajr: "06:21", shuruq: "07:42", dhuhr: "13:37", asr: "16:54", maghrib: "19:28", isha: "20:45" },
-		{ day: 18, date: "7 مارس", fajr: "06:20", shuruq: "07:41", dhuhr: "13:37", asr: "16:54", maghrib: "19:29", isha: "20:46" },
-		{ day: 19, date: "8 مارس", fajr: "06:19", shuruq: "07:40", dhuhr: "13:37", asr: "16:54", maghrib: "19:29", isha: "20:46" },
-		{ day: 20, date: "9 مارس", fajr: "06:18", shuruq: "07:39", dhuhr: "13:36", asr: "16:54", maghrib: "19:30", isha: "20:47" },
-		{ day: 21, date: "10 مارس", fajr: "06:17", shuruq: "07:38", dhuhr: "13:36", asr: "16:55", maghrib: "19:30", isha: "20:48" },
-		{ day: 22, date: "11 مارس", fajr: "06:15", shuruq: "07:37", dhuhr: "13:36", asr: "16:55", maghrib: "19:31", isha: "20:48" },
-		{ day: 23, date: "12 مارس", fajr: "06:14", shuruq: "07:35", dhuhr: "13:36", asr: "16:55", maghrib: "19:32", isha: "20:49" },
-		{ day: 24, date: "13 مارس", fajr: "06:13", shuruq: "07:34", dhuhr: "13:35", asr: "16:55", maghrib: "19:32", isha: "20:49" },
-		{ day: 25, date: "14 مارس", fajr: "06:12", shuruq: "07:33", dhuhr: "13:35", asr: "16:55", maghrib: "19:33", isha: "20:50" },
-		{ day: 26, date: "15 مارس", fajr: "06:11", shuruq: "07:32", dhuhr: "13:35", asr: "16:56", maghrib: "19:34", isha: "20:51" },
-		{ day: 27, date: "16 مارس", fajr: "06:09", shuruq: "07:31", dhuhr: "13:34", asr: "16:56", maghrib: "19:34", isha: "20:51" },
-		{ day: 28, date: "17 مارس", fajr: "06:08", shuruq: "07:29", dhuhr: "13:34", asr: "16:56", maghrib: "19:35", isha: "20:52" },
-		{ day: 29, date: "18 مارس", fajr: "06:07", shuruq: "07:28", dhuhr: "13:34", asr: "16:56", maghrib: "19:35", isha: "20:53" },
-		{ day: 30, date: "19 مارس", fajr: "06:06", shuruq: "07:27", dhuhr: "13:33", asr: "16:56", maghrib: "19:36", isha: "20:53" },
-        // يمكنك إضافة باقي الأيام بنفس الطريقة هنا
-    ],
+        { day: 1, date: "18 فبراير", fajr: "06:23", shuruq: "07:47", dhuhr: "13:25", asr: "16:29", maghrib: "18:58", isha: "20:19" },
+        { day: 2, date: "19 فبراير", fajr: "06:22", shuruq: "07:46", dhuhr: "13:25", asr: "16:30", maghrib: "18:59", isha: "20:19" },
+        { day: 3, date: "20 فبراير", fajr: "06:21", shuruq: "07:45", dhuhr: "13:25", asr: "16:30", maghrib: "19:00", isha: "20:20" },
+        { day: 4, date: "21 فبراير", fajr: "06:20", shuruq: "07:44", dhuhr: "13:24", asr: "16:31", maghrib: "19:01", isha: "20:21" },
+        { day: 5, date: "22 فبراير", fajr: "06:19", shuruq: "07:43", dhuhr: "13:24", asr: "16:32", maghrib: "19:02", isha: "20:22" },
+        { day: 6, date: "23 فبراير", fajr: "06:18", shuruq: "07:42", dhuhr: "13:24", asr: "16:32", maghrib: "19:03", isha: "20:23" },
+        { day: 7, date: "24 فبراير", fajr: "06:17", shuruq: "07:41", dhuhr: "13:24", asr: "16:33", maghrib: "19:03", isha: "20:23" },
+        { day: 8, date: "25 فبراير", fajr: "06:16", shuruq: "07:40", dhuhr: "13:24", asr: "16:33", maghrib: "19:04", isha: "20:24" },
+        { day: 9, date: "26 فبراير", fajr: "06:15", shuruq: "07:38", dhuhr: "13:24", asr: "16:34", maghrib: "19:05", isha: "20:25" },
+        { day: 10, date: "27 فبراير", fajr: "06:14", shuruq: "07:37", dhuhr: "13:24", asr: "16:34", maghrib: "19:06", isha: "20:26" },
+        { day: 11, date: "28 فبراير", fajr: "06:12", shuruq: "07:36", dhuhr: "13:23", asr: "16:35", maghrib: "19:07", isha: "20:26" },
+        // تكملة باقي الأيام بناءً على التسلسل التقريبي لمدينة طرابلس في مارس
+        { day: 12, date: "1 مارس", fajr: "06:11", shuruq: "07:34", dhuhr: "13:23", asr: "16:35", maghrib: "19:08", isha: "20:27" },
+        { day: 13, date: "2 مارس", fajr: "06:10", shuruq: "07:33", dhuhr: "13:23", asr: "16:36", maghrib: "19:09", isha: "20:28" },
+        { day: 14, date: "3 مارس", fajr: "06:09", shuruq: "07:32", dhuhr: "13:23", asr: "16:36", maghrib: "19:09", isha: "20:29" },
+        { day: 15, date: "4 مارس", fajr: "06:07", shuruq: "07:31", dhuhr: "13:23", asr: "16:36", maghrib: "19:10", isha: "20:30" },
+        { day: 16, date: "5 مارس", fajr: "06:06", shuruq: "07:29", dhuhr: "13:22", asr: "16:37", maghrib: "19:11", isha: "20:31" },
+        { day: 17, date: "6 مارس", fajr: "06:05", shuruq: "07:28", dhuhr: "13:22", asr: "16:37", maghrib: "19:12", isha: "20:31" },
+        { day: 18, date: "7 مارس", fajr: "06:03", shuruq: "07:27", dhuhr: "13:22", asr: "16:37", maghrib: "19:12", isha: "20:32" },
+        { day: 19, date: "8 مارس", fajr: "06:02", shuruq: "07:25", dhuhr: "13:22", asr: "16:38", maghrib: "19:13", isha: "20:33" },
+        { day: 20, date: "9 مارس", fajr: "06:00", shuruq: "07:24", dhuhr: "13:21", asr: "16:38", maghrib: "19:14", isha: "20:34" },
+        { day: 21, date: "10 مارس", fajr: "05:59", shuruq: "07:22", dhuhr: "13:21", asr: "16:38", maghrib: "19:15", isha: "20:35" },
+        { day: 22, date: "11 مارس", fajr: "05:58", shuruq: "07:21", dhuhr: "13:21", asr: "16:38", maghrib: "19:15", isha: "20:35" },
+        { day: 23, date: "12 مارس", fajr: "05:56", shuruq: "07:20", dhuhr: "13:21", asr: "16:39", maghrib: "19:16", isha: "20:36" },
+        { day: 24, date: "13 مارس", fajr: "05:55", shuruq: "07:18", dhuhr: "13:20", asr: "16:39", maghrib: "19:17", isha: "20:37" },
+        { day: 25, date: "14 مارس", fajr: "05:53", shuruq: "07:17", dhuhr: "13:20", asr: "16:39", maghrib: "19:18", isha: "20:38" },
+        { day: 26, date: "15 مارس", fajr: "05:52", shuruq: "07:16", dhuhr: "13:20", asr: "16:39", maghrib: "19:18", isha: "20:38" },
+        { day: 27, date: "16 مارس", fajr: "05:51", shuruq: "07:14", dhuhr: "13:20", asr: "16:39", maghrib: "19:19", isha: "20:39" },
+        { day: 28, date: "17 مارس", fajr: "05:49", shuruq: "07:13", dhuhr: "13:19", asr: "16:40", maghrib: "19:20", isha: "20:40" },
+        { day: 29, date: "18 مارس", fajr: "05:48", shuruq: "07:11", dhuhr: "13:19", asr: "16:40", maghrib: "19:21", isha: "20:41" },
+        { day: 30, date: "19 مارس", fajr: "05:46", shuruq: "07:10", dhuhr: "13:19", asr: "16:40", maghrib: "19:21", isha: "20:41" }
+    ]
+};
     ghadames: [
         { day: 1, date: "18 فبراير", fajr: "06:37", shuruq: "07:59", dhuhr: "13:40", asr: "16:47", maghrib: "19:16", isha: "20:34" },
 		{ day: 2, date: "19 فبراير", fajr: "06:36", shuruq: "07:58", dhuhr: "13:40", asr: "16:48", maghrib: "19:17", isha: "20:35" },
@@ -783,3 +761,4 @@ function shareApp() {
         alert("file:///C:/Users/Administrator/Desktop/MyRamadanProject/index.html " + window.location.href);
     }
 }
+
