@@ -65,7 +65,6 @@ const ramadanTimes = {
         { day: 9, date: "26 فبراير", fajr: "06:15", shuruq: "07:38", dhuhr: "13:24", asr: "16:34", maghrib: "19:05", isha: "20:25" },
         { day: 10, date: "27 فبراير", fajr: "06:14", shuruq: "07:37", dhuhr: "13:24", asr: "16:34", maghrib: "19:06", isha: "20:26" },
         { day: 11, date: "28 فبراير", fajr: "06:12", shuruq: "07:36", dhuhr: "13:23", asr: "16:35", maghrib: "19:07", isha: "20:26" },
-        // تكملة باقي الأيام بناءً على التسلسل التقريبي لمدينة طرابلس في مارس
         { day: 12, date: "1 مارس", fajr: "06:11", shuruq: "07:34", dhuhr: "13:23", asr: "16:35", maghrib: "19:08", isha: "20:27" },
         { day: 13, date: "2 مارس", fajr: "06:10", shuruq: "07:33", dhuhr: "13:23", asr: "16:36", maghrib: "19:09", isha: "20:28" },
         { day: 14, date: "3 مارس", fajr: "06:09", shuruq: "07:32", dhuhr: "13:23", asr: "16:36", maghrib: "19:09", isha: "20:29" },
@@ -761,4 +760,5 @@ function shareApp() {
         alert("file:///C:/Users/Administrator/Desktop/MyRamadanProject/index.html " + window.location.href);
     }
 }
+
 
