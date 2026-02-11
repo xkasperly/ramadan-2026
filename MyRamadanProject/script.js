@@ -54,7 +54,7 @@ const ramadanDuas = [
 // 2. قاعدة بيانات المواقيت الأساسية لليوم الأول (رمضان 2026)
 const ramadanTimes = {
     tripoli: [
-        { day: 1, date: "18 فبراير", fajr: "06:23", shuruq: "07:47", dhuhr: "13:25", asr: "16:29", maghrib: "18:58", isha: "20:19" },
+      { day: 1, date: "18 فبراير", fajr: "06:23", shuruq: "07:47", dhuhr: "13:25", asr: "16:29", maghrib: "18:58", isha: "20:19" },
         { day: 2, date: "19 فبراير", fajr: "06:22", shuruq: "07:46", dhuhr: "13:25", asr: "16:30", maghrib: "18:59", isha: "20:19" },
         { day: 3, date: "20 فبراير", fajr: "06:21", shuruq: "07:45", dhuhr: "13:25", asr: "16:30", maghrib: "19:00", isha: "20:20" },
         { day: 4, date: "21 فبراير", fajr: "06:20", shuruq: "07:44", dhuhr: "13:24", asr: "16:31", maghrib: "19:01", isha: "20:21" },
@@ -84,8 +84,8 @@ const ramadanTimes = {
         { day: 28, date: "17 مارس", fajr: "05:49", shuruq: "07:13", dhuhr: "13:19", asr: "16:40", maghrib: "19:20", isha: "20:40" },
         { day: 29, date: "18 مارس", fajr: "05:48", shuruq: "07:11", dhuhr: "13:19", asr: "16:40", maghrib: "19:21", isha: "20:41" },
         { day: 30, date: "19 مارس", fajr: "05:46", shuruq: "07:10", dhuhr: "13:19", asr: "16:40", maghrib: "19:21", isha: "20:41" }
-    ]
-};
+        // يمكنك إضافة باقي الأيام بنفس الطريقة هنا
+    ],
     ghadames: [
         { day: 1, date: "18 فبراير", fajr: "06:37", shuruq: "07:59", dhuhr: "13:40", asr: "16:47", maghrib: "19:16", isha: "20:34" },
 		{ day: 2, date: "19 فبراير", fajr: "06:36", shuruq: "07:58", dhuhr: "13:40", asr: "16:48", maghrib: "19:17", isha: "20:35" },
@@ -760,5 +760,6 @@ function shareApp() {
         alert("file:///C:/Users/Administrator/Desktop/MyRamadanProject/index.html " + window.location.href);
     }
 }
+
 
 
