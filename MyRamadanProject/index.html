@@ -6,10 +6,9 @@
     <title>إمساكية رمضان 2026 | مكتب غدامس</title>
     <style>
         :root {
-            /* درجات الأزرق الملكي والنيون */
             --royal-blue: #4169e1;
             --neon-blue: #00d4ff;
-            --bg-dark: #050a15; /* خلفية كحلية عميقة */
+            --bg-dark: #050a15;
             --card-bg: rgba(65, 105, 225, 0.05);
         }
 
@@ -27,7 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* توهج خلفي أزرق */
         .glow-bg {
             position: fixed;
             width: 100%;
@@ -40,10 +38,9 @@
             position: relative;
             z-index: 10;
             padding: 40px 20px;
-            max-width: 700px;
+            max-width: 800px;
         }
 
-        /* الهلال بنور نيون أزرق */
         .moon {
             font-size: 5rem;
             display: inline-block;
@@ -59,28 +56,47 @@
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
         }
 
-        /* دائرة العداد الزرقاء */
-        .counter-box {
-            width: 140px;
-            height: 140px;
-            border: 2px solid var(--royal-blue);
-            border-radius: 50%;
+        /* تعديل نظام العداد ليكون أفقياً */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin: 30px auto;
+            flex-wrap: wrap;
+        }
+
+        .counter-box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--royal-blue);
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             background: var(--card-bg);
-            box-shadow: 0 0 25px rgba(65, 105, 225, 0.2), inset 0 0 15px rgba(65, 105, 225, 0.1);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.2);
+            transition: transform 0.3s;
         }
 
-        #days-num {
-            font-size: 3.5rem;
+        .counter-box:hover {
+            transform: scale(1.05);
+            border-color: var(--neon-blue);
+        }
+
+        .num {
+            font-size: 2.2rem;
             font-weight: bold;
             color: white;
             text-shadow: 0 0 10px var(--royal-blue);
+            line-height: 1;
         }
 
-        /* قسم نبذة الوكالة بتنسيق أزرق */
+        .label {
+            color: var(--neon-blue);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
         .about-agency {
             margin-top: 40px;
             padding: 25px;
@@ -112,11 +128,17 @@
             font-weight: bold;
         }
 
-        /* حركة الطفو */
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(-5deg); filter: drop-shadow(0 0 15px var(--royal-blue)); }
-            50% { transform: translateY(-20px) rotate(5deg); filter: drop-shadow(0 0 30px var(--neon-blue)); }
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
+
+        /* للهواتف الصغيرة */
+        @media (max-width: 480px) {
+            .counter-box { width: 70px; height: 80px; }
+            .num { font-size: 1.5rem; }
+        }
+		
     </style>
 </head>
 <body>
@@ -127,17 +149,31 @@
         <div class="moon">🌙</div>
         <h1>سيفتح في أول أيام رمضان إن شاء الله</h1>
         
-        <div class="counter-box">
-            <span id="days-num">00</span>
-            <small style="color: var(--neon-blue);">يوماً متبقياً</small>
+        <div class="countdown-container">
+            <div class="counter-box">
+                <span class="num" id="days">00</span>
+                <span class="label">يوم</span>
+            </div>
+            <div class="counter-box">
+                <span class="num" id="hours">00</span>
+                <span class="label">ساعة</span>
+            </div>
+            <div class="counter-box">
+                <span class="num" id="minutes">00</span>
+                <span class="label">دقيقة</span>
+            </div>
+            <div class="counter-box">
+                <span class="num" id="seconds">00</span>
+                <span class="label">ثانية</span>
+            </div>
         </div>
 
         <div class="about-agency">
             <h2>عن الوكالة | مكتب غدامس</h2>
             <p>
-                الوكالة الوطنية للجهود التطوعية للشباب هي مؤسسة تهدف إلى غرس روح التطوع في نفوس الشباب، وتعمل على تحويل طاقتهم إلى قوة إيجابية تخدم المجتمع. رسالتها أن تقدم برامج تعليمية وتدريبية وبحثية متميزة، في بيئة محفزة، وبشراكة مجتمعية فاعلة، لتساهم في بناء مجتمع المعرفة. رؤيتها أن تكون رائدة في هذا المجال، وأن تجعل من العمل التطوعي ثقافة راسخة بين الناس.
+                الوكالة الوطنية للجهود التطوعية للشباب هي مؤسسة تهدف إلى غرس روح التطوع في نفوس الشباب، وتعمل على تحويل طاقتهم إلى قوة إيجابية تخدم المجتمع.
                 <br><br>
-                أما أهدافها فهي إعداد شباب مؤهل لسوق العمل، وتنمية مهارات التفكير النقدي وحل المشكلات، وتعزيز روح القيادة والابتكار، إلى جانب ترسيخ القيم الأخلاقية والمهنية، ودعم البحث العلمي وخدمة المجتمع.
+                أهدافنا: إعداد شباب مؤهل لسوق العمل، وتنمية مهارات التفكير النقدي، وترسيخ القيم الأخلاقية والمهنية.
             </p>
         </div>
 
@@ -148,19 +184,32 @@
 
     <script>
         function updateCounter() {
-            const now = new Date();
-            const target = new Date(2026, 1, 19); // 18 فبراير 2026
-            const diff = target - now;
+            // تاريخ أول أيام رمضان 2026 المتوقع (18 فبراير أو 19 فبراير حسب الرؤية)
+            // ملاحظة: JavaScript يبدأ ترقيم الشهور من 0 (يناير = 0، فبراير = 1)
+            const targetDate = new Date('February 19, 2026 00:00:00').getTime();
             
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
             if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById('days-num').innerText = days < 10 ? '0' + days : days;
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+                document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+                document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+                document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
             } else {
-                document.getElementById('days-num').innerText = "00";
+                // في حال وصل الوقت للصفر
+                document.querySelector('.countdown-container').innerHTML = "<h2 style='color:var(--neon-blue)'>رمضان مبارك!</h2>";
             }
         }
-        updateCounter();
-        setInterval(updateCounter, 3600000);
+
+        // تحديث كل ثانية
+        setInterval(updateCounter, 1000);
+        updateCounter(); // تشغيل فوري عند التحميل
     </script>
 </body>
 </html>
