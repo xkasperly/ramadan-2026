@@ -1044,3 +1044,58 @@ td:nth-child(2) {
     opacity: 0;
     pointer-events: none;
 }
+
+/* تنسيق زر الوصول السريع */
+.quick-access-btn {
+    background: linear-gradient(45deg, var(--royal-blue), var(--neon-blue));
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+    transition: 0.3s;
+}
+
+.quick-access-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
+}
+
+/* تنسيق النافذة المنبثقة */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--bg-dark);
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid var(--royal-blue);
+    width: 80%;
+    max-width: 400px;
+    border-radius: 15px;
+    text-align: right;
+    color: white;
+}
+
+.close {
+    color: #aaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover { color: var(--neon-blue); }
